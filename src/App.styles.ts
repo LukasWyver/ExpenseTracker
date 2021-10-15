@@ -22,8 +22,7 @@ export const Body = styled.div`
   margin: auto;
   max-width: 980px;
   margin-bottom: 50px;
-  background-color: #e5e5e5;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 0  0 10px 10px;
-  box-shadow: 2px 2px 8px #b2b2b2;
+  
   `;
