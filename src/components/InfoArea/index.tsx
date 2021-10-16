@@ -5,13 +5,21 @@ import {
   BsArrowRightSquareFill,
 } from "react-icons/all";
 import { formatCurrentMonth } from "../../helpers/dateFilter";
+import { ResumeItem } from '../ResumeItem'
 
 type Props = {
   currentMonth: string;
   onMonthChange: (newMonth: string) => void;
+  income: number;
+  expense: number;
 };
 
-export const InfoArea = ({ currentMonth, onMonthChange }: Props) => {
+export const InfoArea = ({
+  currentMonth,
+  onMonthChange,
+  income,
+  expense,
+}: Props) => {
   const handlePrevMonth = () => {
     let [year, month] = currentMonth.split("-");
     let currentDate = new Date(parseInt(year), parseInt(month) - 1, 1);
@@ -32,15 +40,22 @@ export const InfoArea = ({ currentMonth, onMonthChange }: Props) => {
         <C.MonthArrow onClick={handlePrevMonth}>
           <BsArrowLeftSquareFill />
         </C.MonthArrow>
+
         <C.MonthTitle>
           <BsCalendar3 size={18} style={{ paddingRight: "10" }} />
           {formatCurrentMonth(currentMonth)}
         </C.MonthTitle>
+
         <C.MonthArrow onClick={handleNextMonth}>
           <BsArrowRightSquareFill />
         </C.MonthArrow>
       </C.MonthArea>
-      <C.ResumeArea>...</C.ResumeArea>
+
+      <C.ResumeArea>
+        <ResumeItem title="Receitas" value={income}/>
+        <ResumeItem title="Despesas" value={expense}/>
+        <ResumeItem title="Balanço" value={income - expense}/>
+      </C.ResumeArea>
     </C.Container>
   );
 };
