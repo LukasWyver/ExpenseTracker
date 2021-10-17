@@ -5,7 +5,7 @@ import {
   BsArrowRightSquareFill,
 } from "react-icons/all";
 import { formatCurrentMonth } from "../../helpers/dateFilter";
-import { ResumeItem } from '../ResumeItem'
+import { ResumeItem } from "../ResumeItem";
 
 type Props = {
   currentMonth: string;
@@ -52,9 +52,13 @@ export const InfoArea = ({
       </C.MonthArea>
 
       <C.ResumeArea>
-        <ResumeItem title="Receitas" value={income}/>
-        <ResumeItem title="Despesas" value={expense}/>
-        <ResumeItem title="Balanço" value={income - expense}/>
+        <ResumeItem title="Receitas" value={income} />
+        <ResumeItem title="Despesas" value={expense} />
+        <ResumeItem
+          title="Balanço"
+          value={income - expense}
+          color={income - expense < 0 ? "red" : "green"}
+        />
       </C.ResumeArea>
     </C.Container>
   );
